@@ -8,6 +8,7 @@ import AppVue from "../App.vue";
 
 describe("App", (): void => {
   let wrapper: VueWrapper;
+  const dataTestInputNumberOfLines: string = "input_numberOfLines";
 
   beforeEach((): void => {
     vi.clearAllMocks();
@@ -16,13 +17,11 @@ describe("App", (): void => {
 
   test("Show error when number is not include in [1, 100]", async (): Promise<void> => {
     // Given
-    const dataTestInputNumberOfLines: string = "input_numberOfLines";
-    const dataTestMsgError: string = "msg_error";
-
-    // When
     const input = wrapper.find(`[data-testid="${dataTestInputNumberOfLines}"]`);
+    const dataTestMsgError: string = "msg_error";
     const msgError = wrapper.find(`[data-testid="${dataTestMsgError}"]`);
 
+    // When
     input.setValue(0);
 
     await wrapper.vm.$nextTick();
@@ -35,13 +34,11 @@ describe("App", (): void => {
 
   test("Show Fizz Buzz FizzBuzz number", async (): Promise<void> => {
     // Given
-    const dataTestInputNumberOfLines: string = "input_numberOfLines";
-    const dataTestFizzBuzzLines: string = "lines_fizzBuzz";
-
-    // When
     const input = wrapper.find(`[data-testid="${dataTestInputNumberOfLines}"]`);
+    const dataTestFizzBuzzLines: string = "lines_fizzBuzz";
     const fizzBuzz = wrapper.find(`[data-testid="${dataTestFizzBuzzLines}"]`);
 
+    // When
     input.setValue(15);
 
     await wrapper.vm.$nextTick();
